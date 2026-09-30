@@ -1,4 +1,5 @@
 mod todo;
+mod cli;
 
 use std::io::{self};
 use std::time::SystemTime;
@@ -13,6 +14,7 @@ struct Todo {
 
 fn main() {
     println!("Welcome to your Todo Application");
+    cli::show_main_menu();
     let mut todos: Vec<Todo> = Vec::new();
 
     todos.push(Todo {
