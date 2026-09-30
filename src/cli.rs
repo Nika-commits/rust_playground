@@ -1,3 +1,5 @@
+use std::io::{self, Read};
+
 pub fn show_main_menu(){
     println!("-------------------");
     println!("------MY TODOS-----");
@@ -7,4 +9,13 @@ pub fn show_main_menu(){
     println!("4. Pending Tasks");
     println!("5. Delete Tasks");
     println!("6. Exit");
+}
+
+pub fn get_initial_choice() -> u8 {
+    let mut input = String::new();
+    match io::stdin()
+        .read_line(&mut input){
+            Ok(_) => input.trim().parse::<u8>().unwrap_or_default(),
+            Err(_) => 0
+        }
 }
