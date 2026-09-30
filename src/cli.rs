@@ -1,4 +1,5 @@
 use std::io::{self};
+use crate::todo::{Status, Todo};
 
 pub fn show_main_menu(){
     println!("-------------------");
@@ -9,6 +10,19 @@ pub fn show_main_menu(){
     println!("4. Pending Tasks");
     println!("5. Delete Tasks");
     println!("6. Exit");
+}
+
+pub fn display_todos(todos: &Vec<Todo>){
+    for todo in todos {
+        println!("{}, {}, {}", 
+            todo.id,
+            match todo.status {
+                Status::Pending => "[o]",
+                Status::Complete => "[x]"
+            },
+            todo.title
+        );
+    }
 }
 
 pub fn get_initial_choice() -> u8 {
@@ -29,3 +43,4 @@ pub fn get_todo_title() -> String {
         } 
     }
 }
+

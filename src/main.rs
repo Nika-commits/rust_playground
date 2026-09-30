@@ -11,7 +11,10 @@ fn main() {
         let choice = cli::get_initial_choice();         
 
         match choice {
-           1 => println!("Display Todos"),
+           1 => {
+               cli::display_todos(&todos);
+               continue;
+           } 
            2 => {
                println!("Enter todo title.");
                let title = cli::get_todo_title();
