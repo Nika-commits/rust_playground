@@ -17,7 +17,7 @@ pub fn display_todos(todos: &Vec<Todo>){
         println!("{}, {}, {}", 
             todo.id,
             match todo.status {
-                Status::Pending => "[o]",
+                Status::Pending => "[ ]",
                 Status::Complete => "[x]"
             },
             todo.title
@@ -44,3 +44,11 @@ pub fn get_todo_title() -> String {
     }
 }
 
+pub fn get_todo_id() -> usize{
+    let mut input = String::new();
+    
+    match io::stdin().read_line(&mut input){
+        Ok(_) => input.trim().parse::<usize>().unwrap_or_default(),
+        Err(_) => 0,
+    }
+}

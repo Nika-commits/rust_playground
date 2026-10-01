@@ -29,7 +29,19 @@ fn main() {
 
                println!("Todo added successfully.")
            }, 
-           3 => println!("Complete Tasks"),
+           3 => {
+               println!("Enter todo id to mark complete !");
+
+               let id = cli::get_todo_id();
+
+               match todos.iter_mut().find(|todo| todo.id == id) {
+                   Some(todo) => {
+                       todo.complete();
+                       println!("Todo marked completed");
+                   }
+                   None => println!("Todo with id: {} not found", id),
+               }
+           },
            4 => println!("Pending Tasks"),
            5 => println!("Delete Tasks"),
            6 => {
